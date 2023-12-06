@@ -1,0 +1,8 @@
+myreact:
+  enable: true
+  server:
+    port: 8888
+    boss-loop-group-thread-num: 5
+    worker-loop-group-thread-num: 10
+server:
+  port: 8080
