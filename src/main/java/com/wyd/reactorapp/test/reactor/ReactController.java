@@ -8,7 +8,6 @@ import com.wyd.reactorweb.design.reactor.core.AsynRemoteChannel;
 import com.wyd.reactorweb.design.reactor.core.ChannelContext;
 import com.wyd.reactorweb.design.reactor.factory.SpringAsynRemoteChannelBuilderFactory;
 import io.netty.channel.Channel;
-import io.netty.channel.ChannelHandlerContext;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -38,7 +37,8 @@ public class ReactController {
     @MyRequestMapping(value = "/test2")
     public void test2(Channel c) {
         System.out.println("test2运行~");
-        AsynRemoteChannel channel = builderFactory.getAsynRemoteChannel("messageSendServiceAsynAdaptor");
+        AsynRemoteChannel channel =
+                builderFactory.getAsynRemoteChannel("messageSendServiceAsynAdaptor");
         // 简单测试一下
         ChannelContext<Boolean> context = new ChannelContext<>();
         SendInfo sendInfo = new SendInfo();

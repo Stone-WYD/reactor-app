@@ -31,8 +31,8 @@ public class RemoteMessageSendServiceImpl implements RemoteMessageSendService {
                 new ThreadPoolExecutor.AbortPolicy());
 
     // 确保队列线程安全
-    private ReentrantLock lock = new ReentrantLock();
-    private Condition condition = lock.newCondition();
+    private final ReentrantLock lock = new ReentrantLock();
+    private final Condition condition = lock.newCondition();
 
     private final Snowflake snowflake = new Snowflake();
 
@@ -102,6 +102,7 @@ public class RemoteMessageSendServiceImpl implements RemoteMessageSendService {
         for (int i = 0; i < callIds.size(); i++) {
             String callId = callIds.get(i);
             SendInfo sendInfo = sendInfos.get(i);
+            // 业务处理
             AjaxResult<Boolean> result = handleBusiness(sendInfo);
             resultData.put(callId, result);
         }
