@@ -17,7 +17,6 @@ public class TestHandler implements Handler {
     @Override
     public void handle(ChannelContext channelContext) {
         Channel socketChannel = (Channel) channelContext.getContextMap().get("socketChannel");
-        // 这里不能直接输出
         socketChannel.writeAndFlush(channelContext.getAsynReceptResult());
     }
 }
